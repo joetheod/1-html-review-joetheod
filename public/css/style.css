@@ -1,0 +1,34 @@
+body {
+    background-color: #D3D3D3;
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+  }
+
+  h2 {
+color: #b93939 ; 
+}
+
+link {
+    color: #000;
+}
+
+.img-thumbnail {
+    display: block;
+   margin-left: auto;
+  margin-right: auto;
+}
+
+.btn btn-primary {
+    background-color: #b93939;
+}
+
+#shortinput {
+    width: max-content;
+}
+
+#Recommendation {
+    width: 40%;
+}
