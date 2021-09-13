@@ -38,7 +38,7 @@
       </div>
     </nav>
     <h2>Kyle's Favorite Books</h2>
-    <table class="table table-light">
+    <table id="hw2btable" class="table table-light">
         <thead>
           <tr>
             <th scope="col">Book #</th>
@@ -127,6 +127,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-  
+    <!-- tablesort code and style taken from http://tristen.ca/tablesort/demo/ -->
+    <script src='tablesort.min.js'></script>
+    <script>
+      new Tablesort(document.getElementById('hw2btable'));
+    </script>
   </body>
 </html>
