@@ -53,7 +53,7 @@
             <p>Age: {{ result.dob.age }}</p>
             <p><a v-bind:href="'mailto:' + result.email">{{ result.email }}</a></p>   
             <p>Phone Number {{ result.phone }}</p>
-            <p>{{ result.picture.large }}</p>
+            <p><a v-bind:src="result.picture.medium" v-bind:alt="result.name.first" a></p>
           </div>
         </div>
     <table></table>
