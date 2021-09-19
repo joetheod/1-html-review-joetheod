@@ -71,10 +71,11 @@
             <li v-for="item in list">{{ item }}</li>
           </ul>
           <p>{{ message }}</p>
-          <p>{{ result.name.first }} {{ result.name.last }}</p>
-          <p><a v-bind:href="'mailto:' + result.email">{{ result.email }}</a></p>
-          <p>{{ result.dob.date }}
-          <p>{{ result.dob.age }}</p>
+          <p>Name: {{ result.name.first }} {{ result.name.last }}</p>
+          <p>Country of Origin: {{ result.location.country }}</p>
+          <p>Birthday: {{ result.dob.date }}
+          <p>Age: {{ result.dob.age }}</p>
+          <p><a v-bind:href="'mailto:' + result.email">{{ result.email }}</a></p>   
           <p>{{ result.location.street.number }} {{ result.location.street.name }} </p>
           <p>{{ result.location.city }} {{ result.location.state }} {{ result.location.country }}</p>
           <p>{{ result.phone }}</p>
