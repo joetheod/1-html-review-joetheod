@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
     <title>Data & Systems - HW1</title>
+    <script src="https://unpkg.com/vue@next"></script>
     
   </head>
   <body>
@@ -37,7 +38,7 @@
         </form>
       </div>
     </nav>
-    <h2>Kyle's Favorite Books</h2>
+    <h2>{{ result.name.first }}'s Favorite Books</h2>
     <table id="hw2btable" class="table table-light">
         <thead>
           <tr>
@@ -132,5 +133,6 @@
     <script>
       new Tablesort(document.getElementById('hw2btable'));
     </script>
+    <script src="js/index.js"></script>
   </body>
 </html>
