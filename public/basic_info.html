@@ -39,11 +39,11 @@
         </form>
       </div>
     </nav>
-    <h2>   Basic Information </h2>
+    <h2>   Basic Information -  {{ result.name.first }} {{ result.name.last }} </h2>
     <p> 
-        <li>  Name: <b>Kyle Borst</b></li>
-        <li>  Email: <a href="mailto:k.borst@rsm.com" target="_blank" class="btn btn-primary">Email Kyle!</a></li>
-        <li>  Birthday: <b>3/13/1989</b></li>
+        <li> Name: {{ result.name.first }} {{ result.name.last }}</li>
+        <li><a v-bind:href="'mailto:' + result.email">{{ result.email }} </a></li>   
+        <li>  Birthday: {{ result.dob.date }}</b></li>
         <li>  Address: <b>314 N Washington Bloomington, IN 47408</b></li>
         <li>  Phone Number <b>(812) 442-8331</b></li>
         <li>  Country: <b>USA</b></li>
