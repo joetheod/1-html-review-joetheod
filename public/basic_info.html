@@ -41,17 +41,26 @@
     </nav>
     <h2>   Basic Information -  {{ result.name.first }} {{ result.name.last }} </h2>
     <p> 
-        <li> Name: {{ result.name.first }} {{ result.name.last }}</li>
-        <li><a v-bind:href="'mailto:' + result.email">{{ result.email }} </a></li>   
-        <li>  Birthday: {{ result.dob.date }}</b></li>
-        <li>  Address: <b>314 N Washington Bloomington, IN 47408</b></li>
-        <li>  Phone Number <b>(812) 442-8331</b></li>
-        <li>  Country: <b>USA</b></li>
-        <li>  Position: <b>Tax Accountant</b></li>
-        <li>  Company: <b>RSM</b></li>
-        <li>  Experience: <b>9 years</b></li>
-        
-        <li>  Age: <b>32</b></li>
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col col-4">
+          </div>
+          <div class="col col-8" id="someApp">
+            <h3>Second of two columns</h3>
+            <ul>
+              <li v-for="item in list">{{ item }}</li>
+            </ul>
+            <p>{{ message }}</p>
+            <p>Name: {{ result.name.first }} {{ result.name.last }}</p>
+            <p>Country of Origin: {{ result.location.country }}</p>
+            <p>Birthday: {{ result.dob.date }}
+            <p>Age: {{ result.dob.age }}</p>
+            <p><a v-bind:href="'mailto:' + result.email">{{ result.email }}</a></p>   
+            <p>Phone Number {{ result.phone }}</p>
+            <p>{{ result.picture.large }}</p>
+          </div>
+        </div>
+    <table></table>
         
        
         <br>
