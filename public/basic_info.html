@@ -47,6 +47,9 @@
           </div>
           <div class="col col-8" id="someApp">
             <h3>Basic Information</h3>
+            <form onsubmit="fetchUserData">
+              <button type="submit">Refresh Data</button>
+            </form>
             <p>Name: {{ result.name.first }} {{ result.name.last }}</p>
             <p>Country of Origin: {{ result.location.country }}</p>
             <p>{{ prettyBirthday }}</p>
