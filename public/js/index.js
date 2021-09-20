@@ -7,7 +7,7 @@ const SomeApp = {
     },
         computed: {
           prettyBirthday(){
-              return dayjs('2019-01-25').format('D MM YYYY') // '25/01/2019'
+              return dayjs('2019-01-25').format('D MMM YYYY') // '25/01/2019'
           }
       
 
