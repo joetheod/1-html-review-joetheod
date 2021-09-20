@@ -9,12 +9,10 @@ const SomeApp = {
           prettyBirthday(){
               return dayjs('2019-01-25').format('DD/MM/YYYY') // '25/01/2019'
           }
-      }
+      
 
     },
     created() {
-
-        //Method 1:
         fetch('https://randomuser.me/api/')
         .then(response => response.json())
         .then((json) => {
@@ -27,23 +25,11 @@ const SomeApp = {
         });
 
         console.log("B");
-        /*
-            .then(response => response.json())
-        Is the same as
-            .then(function(response) {return response.json()})
-        */
 
-
-        //Method 2:
-        // const response = await fetch("https://randomuser.me/api/");
-        // const responseJson = await response.json();
-
-        // console.log("Two:", responseJson);
-        // this.message = responseJson.results[0].name;
-        // this.result = responseJson.results[0];
         
     }
 
-  }
+}
+
   
   Vue.createApp(SomeApp).mount('#someApp');
