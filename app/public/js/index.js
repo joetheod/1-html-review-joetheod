@@ -2,10 +2,8 @@ const SomeApp = {
     data() {
       return {
         books: [],
-        selectedBook: null,
-        info: [],
         infoForm: {},
-        selectedInfo: null
+        selectedBook: null
       }
     },
     computed: {},
@@ -18,15 +16,7 @@ const SomeApp = {
             const d = new Intl.NumberFormat("en-US").format(n);
             return "$ " + d;
         },
-        selectBook(s) {
-            if (s == this.selectedBook) {
-                return;
-            }
-            this.selectedBook = s;
-            this.info = [];
-            this.fetchOfferData(this.selectedBook);
-        },
-        fetchBooks() {
+        fetchBookInfo() {
             fetch('/api/books/')
             .then( response => response.json() )
             .then( (responseJson) => {
@@ -37,38 +27,22 @@ const SomeApp = {
                 console.error(err);
             })
         },
-        fetchBookInfo(s) {
-            console.log("Fetching book info for ", s);
-            fetch('/api/info/?book=' + s.bookId)
-            .then( response => response.json() )
-            .then( (responseJson) => {
-                console.log(responseJson);
-                this.info = responseJson;
-            })
-            .catch( (err) => {
-                console.error(err);
-            })
-            .catch( (error) => {
-                console.error(error);
-            });
-        },
         post(evt) {
-            console.log ("Test:", this.selectedOffer);
-          if (this.selectedOffer) {
-              this.postEditOffer(evt);
+            console.log ("Test:", this.selectedBook);
+          if (this.selectedBook) {
+              this.postEditBook(evt);
           } else {
-              this.postNewOffer(evt);
+              this.postNewBook(evt);
           }
         },
-        postEditOffer(evt) {
-          this.offerForm.id = this.selectedOffer.id;
-          this.offerForm.studentId = this.selectedStudent.id;        
+        postEditBook(evt) {
+          this.infoForm.id = this.selectedBook.id;    
           
-          console.log("Editing!", this.offerForm);
+          console.log("Editing!", this.infoForm);
   
-          fetch('api/offer/update.php', {
+          fetch('api/books/update.php', {
               method:'POST',
-              body: JSON.stringify(this.offerForm),
+              body: JSON.stringify(this.infoForm),
               headers: {
                 "Content-Type": "application/json; charset=utf-8"
               }
@@ -77,20 +51,20 @@ const SomeApp = {
             .then( json => {
               console.log("Returned from post:", json);
               // TODO: test a result was returned!
-              this.offers = json;
+              this.books = json;
               
               // reset the form
               this.handleResetEdit();
             });
         },
-        postNewOffer(evt) {
-          this.offerForm.studentId = this.selectedStudent.id;        
+        postNewBook(evt) {
+          this.infoForm.bookId = this.selectedBook.id;        
           
-          console.log("Creating!", this.offerForm);
+          console.log("Creating!", this.infoForm);
   
-          fetch('api/offer/create.php', {
+          fetch('api/books/create.php', {
               method:'POST',
-              body: JSON.stringify(this.offerForm),
+              body: JSON.stringify(this.infoForm),
               headers: {
                 "Content-Type": "application/json; charset=utf-8"
               }
@@ -99,25 +73,25 @@ const SomeApp = {
             .then( json => {
               console.log("Returned from post:", json);
               // TODO: test a result was returned!
-              this.offers = json;
+              this.books = json;
               
               // reset the form
               this.handleResetEdit();
             });
         },
-        handleEditOffer(offer) {
-            this.selectedOffer = offer;
-            this.offerForm = Object.assign({}, this.selectedOffer);
+        handleEditBook(books) {
+            this.selectedBook = books;
+            this.infoForm = Object.assign({}, this.selectedBook);
         },
         handleResetEdit() {
-            this.selectedOffer = null;
-            this.offerForm = {};
+            this.selectedBook = null;
+            this.infoForm = {};
         }
     },
     created() {
-        this.fetchStudentData();
+        this.fetchBookInfo();
     }
   
   }
   
-  Vue.createApp(SomeApp).mount('#offerApp');
+  Vue.createApp(SomeApp).mount('#bookApp');
