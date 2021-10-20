@@ -65,8 +65,10 @@
                         
                         <td></td>
                         <td>
-                          <button type="button" v-on:click="handleEditBook(book)" class="btn btn-outline-secondary btn-sm">Edit</button>
-                          <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
+                          <button type="button" class="btn btn-outline-secondary btn-sm"
+                           v-on:click="selectBook(book)" >Edit</button>
+                          <button type="button" class="btn btn-outline-secondary btn-sm" 
+                          v-on:click="postDeleteBook(book)">Delete</button>
 
                         </td>
                     </tr>
@@ -99,9 +101,9 @@
             </div>
             <div class="mb-3">
               <label for="msrp" class="form-label">MSRP</label>
-              <input type="number" v-model="infoForm.msrp" class="form-control" id="msrp">
+              <input type="float" v-model="infoForm.msrp" class="form-control" id="msrp">
             </div>
-            <button type="submit" class="btn btn-primary">Submit Recommendation!</button>
+            <button type="submit" class="btn btn-primary">{{ selectedBook === null ? "Add" : "Edit" }} Book</button>
             <button type="button" class="btn btn-outline-secondary" 
                v-on:click="handleResetEdit">Clear</button>
           </form>

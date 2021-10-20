@@ -8,10 +8,6 @@ const SomeApp = {
     },
     computed: {},
     methods: {
-        prettyData(d) {
-            return dayjs(d)
-            .format('D MMM YYYY')
-        },
         prettyDollar(n) {
             const d = new Intl.NumberFormat("en-US").format(n);
             return "$ " + d;
@@ -28,17 +24,16 @@ const SomeApp = {
             })
         },
         post(evt) {
-            console.log ("Test:", this.selectedBook);
-          if (this.selectedBook) {
-              this.postEditBook(evt);
-          } else {
-              this.postNewBook(evt);
-          }
-        },
+          if (this.selectedBook === null) {
+            this.postNewBook(evt);
+        } else {
+            this.postEditBook(evt);
+        }
+      },
         postEditBook(evt) {
           this.infoForm.id = this.selectedBook.id;    
           
-          console.log("Editing!", this.infoForm);
+          console.log("Updating!", this.infoForm);
   
           fetch('api/books/update.php', {
               method:'POST',
@@ -79,6 +74,33 @@ const SomeApp = {
               this.handleResetEdit();
             });
         },
+
+        postDeleteBook(o) {
+          if (!confirm("Are you sure you want to delete this book?")) {
+              return;
+          }
+          
+          fetch('api/books/delete.php', {
+              method:'POST',
+              body: JSON.stringify(o),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.books = json;
+              
+              this.handleResetEdit();
+            });
+        },
+        selectBook(o) {
+          this.selectedBook = o;
+          this.infoForm = Object.assign({}, this.selectedBook);
+        },
+
         handleEditBook(books) {
             this.selectedBook = books;
             this.infoForm = Object.assign({}, this.selectedBook);
