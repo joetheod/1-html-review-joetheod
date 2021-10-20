@@ -31,7 +31,7 @@ const SomeApp = {
         }
       },
         postEditBook(evt) {
-          this.infoForm.id = this.selectedBook.id;    
+          this.infoForm.bookId = this.selectedBook.id;    
           
           console.log("Updating!", this.infoForm);
   
@@ -49,12 +49,10 @@ const SomeApp = {
               this.books = json;
               
               // reset the form
-              this.handleResetEdit();
+              this.resetInfoForm();
             });
         },
-        postNewBook(evt) {
-          this.infoForm.bookId = this.selectedBook.id;        
-          
+        postNewBook(evt) {      
           console.log("Creating!", this.infoForm);
   
           fetch('api/books/create.php', {
@@ -70,8 +68,7 @@ const SomeApp = {
               // TODO: test a result was returned!
               this.books = json;
               
-              // reset the form
-              this.handleResetEdit();
+              this.resetInfoForm();
             });
         },
 
@@ -93,19 +90,14 @@ const SomeApp = {
               // TODO: test a result was returned!
               this.books = json;
               
-              this.handleResetEdit();
+              this.resetInfoForm();
             });
         },
         selectBook(o) {
           this.selectedBook = o;
           this.infoForm = Object.assign({}, this.selectedBook);
         },
-
-        handleEditBook(books) {
-            this.selectedBook = books;
-            this.infoForm = Object.assign({}, this.selectedBook);
-        },
-        handleResetEdit() {
+        resetInfoForm() {
             this.selectedBook = null;
             this.infoForm = {};
         }
